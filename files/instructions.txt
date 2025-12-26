@@ -1,0 +1,4 @@
+Given an arbitrary text document written in English, write a production-ready program with unit
+tests that will generate a concordance, I.E. an alphabetical list of all word occurrences. Provide
+the overall count for a word, followed by a colon, and then the sentence numbers in which each
+occurrence appeared.
