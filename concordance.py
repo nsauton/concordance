@@ -6,9 +6,11 @@ ABBREVIATIONS = ["i.e.", "e.g.", "etc.", "vs.",
                  "mr.", "mrs.", "ms.", "dr.", "sr.", "jr.", 
                  "a.m.", "p.m.", "no.", "st.", "ave.", "dept.", "co.", "inc." ]
 
-# the following 2 functions are to deal with the abbreviations in the text
 def replace_abbreviations(text):
-    # replace each . in the text that is apart of an abbreviation with the placeholder <DOT>
+    """
+    Replace periods in known abbreviations with a placeholder
+    returns the updated text and the placeholder
+    """
     placeholder = "<DOT>"
     for abbr in ABBREVIATIONS:
         fix = abbr.replace(".", placeholder)
@@ -16,15 +18,25 @@ def replace_abbreviations(text):
     return text, placeholder
 
 def restore_abbreviations(sentence, placeholder):
-    # change the placeholder <DOT> back to .
+    """
+    Restore abbreviation placeholders back to periods.
+    """
     return sentence.replace(placeholder, ".")
 
-# this function builds a concordance dictionary where each entry is a word 
-# for each word the dict stores its count and a list of what sentences it appears in
 def build_concordance(text):
+    """
+    Build a concordance from an English text.
+
+    Each word maps to:
+      - total occurrence count
+      - a list of sentence numbers in which it appears
+
+    Returns the constructed concordance dictionary.
+    """
+
     concordance = {}
 
-    # replacing the '.' abbreviations with <DOT> so that they dont get split into a sentences
+    # replace abbreviations so they dont get split into sentences
     text = text.lower()
     text, placeholder  = replace_abbreviations(text)
 

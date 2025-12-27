@@ -40,12 +40,17 @@ class TestConcordance(unittest.TestCase):
         self.assertEqual(concordance["mr."]["occurrences"], [3])
 
     def test_contractions(self):
-        text = "Don't stop. Don't ever stop."
+        text = "Don't stop. Don't ever stop. can't won't shouldn't I'm"
         concordance = build_concordance(text)
 
         self.assertIn("don't", concordance)
         self.assertEqual(concordance["don't"]["count"], 2)
         self.assertEqual(concordance["don't"]["occurrences"], [1, 2])
+        self.assertIn("can't", concordance)
+        self.assertIn("won't", concordance)
+        self.assertIn("shouldn't", concordance)
+        self.assertIn("i'm", concordance)
+        self.assertNotIn("I'm", concordance)
 
     def test_punctuation_stripping(self):
         text = "(Hello), world! \"quotes\" comma, semicolon; colon: [brackets] {braces}."
