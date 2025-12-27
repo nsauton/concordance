@@ -1,0 +1,6 @@
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Program output
+concordance_output.txt

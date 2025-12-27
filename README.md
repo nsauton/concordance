@@ -2,6 +2,7 @@
 
 This progam builds a concordance given an arbitrary text document written in English. A concordance is an alphabetical list of all word occurrences in the text document. The concordance provides the overall count for a word, followed by a colon, and then the sentence numbers in which each occurrence appeared.  
   
-To run the program simply run "python3 concordance.py <input_file>" in the terminal and then the resulting concordance will be in a file named concordance_output.txt  
-  
-The files used for <input_file> are all stored in the files/ folder  
+Usage: "python3 concordance.py <input_file> [1|2]"  
+concordance.py is the program that builds the concordance  
+<input_file> text file that the concordacne is built from (files used are found in the files/ folder)  
+[1|2] 1 to write to an output file concordance_output.txt, 2 to print to the terminal  
