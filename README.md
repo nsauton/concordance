@@ -4,7 +4,7 @@ This program builds a concordance given an arbitrary text document written in En
 
 ## concordance.py  
 
-usage: 
+usage:  
 python3 concordance.py [-h] [--print] input_file  
 Build a concordance from an English text file  
 positional arguments:  
@@ -23,5 +23,5 @@ text files used by the concordance program
 ## tests folder  
 
 contains the unit testing for both the build_concordance function and the parse_args function, which take care of the concordance building logic and command line argument parsing respectively.  
-In root folder, run tests with:
+In root folder, run tests with:  
 python3 -m unittest discover tests  
