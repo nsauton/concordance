@@ -1,5 +1,4 @@
 import re
-import sys
 import argparse
 
 # list of abbreviations, can be expanded if I come across more
@@ -74,8 +73,12 @@ def build_concordance(text):
     return concordance
 
 def parse_args(argv=None):
+    """
+    Parse the command line arguments
+    """
+    
     parser = argparse.ArgumentParser(
-        description="Build a concordance from an english text file"
+        description="Build a concordance from an English text file"
     )
 
     parser.add_argument(
@@ -94,7 +97,7 @@ def parse_args(argv=None):
 
 
 def main():
-    # parse cli arguments
+    # parse command line arguments
     args = parse_args()
 
     # open the file
@@ -105,19 +108,19 @@ def main():
     concordance = build_concordance(text)
 
     # write the concordance to an output file or print to terminal
-    if not args.print_output == 1:
+    if args.print_output:
+        count = 1
+        for word in sorted(concordance):
+            occurrences = ','.join(map(str, concordance[word]["occurrences"]))
+            print(f'{count}. {word} {{{concordance[word]["count"]}:{occurrences}}}')
+            count += 1
+    else:
         with open("concordance_output.txt", "w", encoding="utf-8") as fout:
             count = 1
             for word in sorted(concordance):
                 occurrences = ','.join(map(str, concordance[word]["occurrences"]))
                 fout.write(f'{count}. {word} {{{concordance[word]["count"]}:{occurrences}}}\n')
                 count += 1
-    else:
-        count = 1
-        for word in sorted(concordance):
-            occurrences = ','.join(map(str, concordance[word]["occurrences"]))
-            print(f'{count}. {word} {{{concordance[word]["count"]}:{occurrences}}}')
-            count += 1
 
 if __name__ == "__main__":
     main()

@@ -1,5 +1,5 @@
 import unittest
-from concordance import build_concordance
+from concordance import build_concordance, parse_args
 
 class TestConcordance(unittest.TestCase):
     # Unit tests for the build_concordance function
@@ -94,6 +94,23 @@ class TestConcordance(unittest.TestCase):
         concordance = build_concordance(text)
 
         self.assertIn("production-ready", concordance)
+
+class testCLIParsing(unittest.TestCase):
+    # unit tests for the command line input options
+
+    def test_required_input(self):
+        args = parse_args(["input.txt"])
+        self.assertEqual(args.input_file, "input.txt")
+        self.assertFalse(args.print_output)
+
+    def test_print_flag(self):
+        args = parse_args(["input.txt", "--print"])
+        self.assertEqual(args.input_file, "input.txt")
+        self.assertTrue(args.print_output)
+
+    def test_invalid_args(self):
+        with self.assertRaises(SystemExit):
+            parse_args([])
 
 
 if __name__ == "__main__":
