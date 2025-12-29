@@ -1,13 +1,6 @@
 import unittest
 from concordance import build_concordance
 
-'''
-"quotes"! (parentheses). comma,! semicolon;. colon:. [brakcets]. {braces}.
-123 456 789!
-Mr. Gosling?! 
-Dr. Richards, Johnny will be here at 3 p.m..
-'''
-
 class TestConcordance(unittest.TestCase):
     # Unit tests for the build_concordance function
 

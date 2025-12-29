@@ -1,5 +1,6 @@
 import re
 import sys
+import argparse
 
 # list of abbreviations, can be expanded if I come across more
 ABBREVIATIONS = ["i.e.", "e.g.", "etc.", "vs.", 
@@ -72,38 +73,46 @@ def build_concordance(text):
 
     return concordance
 
+def parse_args(argv=None):
+    parser = argparse.ArgumentParser(
+        description="Build a concordance from an english text file"
+    )
+
+    parser.add_argument(
+        "input_file",
+        help="Text file to build the concordance from"
+    )
+
+    parser.add_argument(
+        "--print",
+        dest="print_output",
+        action="store_true",
+        help="Print output to terminal instead of writing to file"
+    )
+
+    return parser.parse_args(argv)
+
 
 def main():
-    # check for correct usage
-    if len(sys.argv) != 3:
-        print("Usage: python3 concordance.py <input_file> [1|2]")
-        print("incorrect number of arguments")
-        sys.exit(1)
-
-    # check if number in usage is correct
-    output = int(sys.argv[2])
-    if not (output == 1 or output == 2):
-        print("Usage: python3 concordance.py <input_file> [1|2]")
-        print("only allowed numbers are 1 and 2")
-        sys.exit(1)
+    # parse cli arguments
+    args = parse_args()
 
     # open the file
-    file = sys.argv[1]
-    with open(file, "r", encoding="utf-8") as fin:
+    with open(args.input_file, "r", encoding="utf-8") as fin:
         text = fin.read()
 
     # build the concordance
     concordance = build_concordance(text)
 
     # write the concordance to an output file or print to terminal
-    if output == 1:
+    if not args.print_output == 1:
         with open("concordance_output.txt", "w", encoding="utf-8") as fout:
             count = 1
             for word in sorted(concordance):
                 occurrences = ','.join(map(str, concordance[word]["occurrences"]))
                 fout.write(f'{count}. {word} {{{concordance[word]["count"]}:{occurrences}}}\n')
                 count += 1
-    elif output == 2:
+    else:
         count = 1
         for word in sorted(concordance):
             occurrences = ','.join(map(str, concordance[word]["occurrences"]))
