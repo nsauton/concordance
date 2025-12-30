@@ -5,6 +5,7 @@ This program builds a concordance given an arbitrary text document written in En
 ## concordance.py  
 
 Build a concordance from an English text file  
+
 usage:  
 python3 concordance.py [-h] [--print] input_file  
 positional arguments:  
@@ -13,7 +14,7 @@ options:
   -h, --help  show this help message and exit  
   --print     Print output to terminal instead of writing to file  
 
-text files used for the input_file are found in the files/ folder
+text files used for the input_file are found in the files/ folder  
 By default, output is written to a file named <input_file>_concordance.txt in the same directory as the input file.  
 If the --print flag is provided, the concordance is printed to the terminal instead of being written to a file.  
 
