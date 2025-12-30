@@ -18,8 +18,8 @@ python3 concordance.py [-h] [--print] input_file
 positional arguments:  
   input_file  Text file to build the concordance from  
 options:  
-  -h, --help  show this help message and exit  
-  --print     Print output to terminal instead of writing to file  
+  -h, --help  show help message and exit  
+  --print     Print output to terminal instead of writing to output file  
 
 text files used for the input_file are found in the files/ folder  
 By default, output is written to a file named <input_file>_concordance.txt in the same directory as the input file.  
