@@ -95,7 +95,7 @@ class TestConcordance(unittest.TestCase):
 
         self.assertIn("production-ready", concordance)
 
-class testCLIParsing(unittest.TestCase):
+class TestCLIParsing(unittest.TestCase):
     # unit tests for the command line input options
 
     def test_required_input(self):

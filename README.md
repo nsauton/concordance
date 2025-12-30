@@ -6,8 +6,15 @@ This program builds a concordance given an arbitrary text document written in En
 
 Build a concordance from an English text file  
 
+make file executable:  
+chmod +x concordance.py  
+
 usage:  
+if executable:  
+./concordance.py [-h] [--print] input_file  
+otherwise:  
 python3 concordance.py [-h] [--print] input_file  
+
 positional arguments:  
   input_file  Text file to build the concordance from  
 options:  
@@ -24,6 +31,6 @@ text files used by the concordance program
 
 ## tests folder  
 
-contains the unit testing for both the build_concordance function and the parse_args function, which take care of the concordance building logic and command line arguments parsing respectively.  
+contains unit tests for both the build_concordance and parse_args functions, which take care of the concordance building logic and command line arguments parsing respectively.  
 In root folder, run tests with:  
 python3 -m unittest discover tests  
