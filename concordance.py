@@ -1,5 +1,6 @@
 import re
 import argparse
+from pathlib import Path
 
 # list of abbreviations, can be expanded if I come across more
 ABBREVIATIONS = ["i.e.", "e.g.", "etc.", "vs.", 
@@ -107,7 +108,7 @@ def main():
     # build the concordance
     concordance = build_concordance(text)
 
-    # write the concordance to an output file or print to terminal
+    # print the concordance to terminal or write it to an output file
     if args.print_output:
         count = 1
         for word in sorted(concordance):
@@ -115,7 +116,12 @@ def main():
             print(f'{count}. {word} {{{concordance[word]["count"]}:{occurrences}}}')
             count += 1
     else:
-        with open("concordance_output.txt", "w", encoding="utf-8") as fout:
+        # build the output file path where the concordance is written to
+        input_path = Path(args.input_file)
+        output_path = input_path.with_name(input_path.stem + "_concordance.txt")
+
+        # write to output file
+        with open(output_path, "w", encoding="utf-8") as fout:
             count = 1
             for word in sorted(concordance):
                 occurrences = ','.join(map(str, concordance[word]["occurrences"]))

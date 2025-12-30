@@ -14,7 +14,8 @@ options:
   --print     Print output to terminal instead of writing to file  
 
 text files used for the input_file are found in the files/ folder
-By default, output is written to a file called 'concordance_output.txt' unless the --print flag is attached which forces output to be printed to the terminal.  
+By default, output is written to a file named <input_file>_concordance.txt in the same directory as the input file.  
+If the --print flag is provided, the concordance is printed to the terminal instead of being written to a file.  
 
 ## files folder  
 

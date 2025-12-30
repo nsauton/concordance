@@ -3,4 +3,4 @@ __pycache__/
 *.pyc
 
 # Program output
-concordance_output.txt
+files/*_concordance.txt
