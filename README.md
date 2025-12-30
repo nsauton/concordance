@@ -13,7 +13,7 @@ options:
   -h, --help  show this help message and exit  
   --print     Print output to terminal instead of writing to file  
 
-input files used are found in the files/ folder
+text files used for the input_file are found in the files/ folder
 By default, output is written to a file called 'concordance_output.txt' unless the --print flag is attached which forces output to be printed to the terminal.  
 
 ## files folder  
